@@ -12,6 +12,8 @@ script:
 
 deploy: 
   provider: elasticbeanstalk
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
   region: "us-east-2"
   app: "react"
   env: "React-env"
@@ -19,6 +21,4 @@ deploy:
   bucket_path: "react"
   on:
     branch: master
-  access_key_id: $AWS_ACCESS_KEY
-  secret_access_key:
-    secret: "$AWS_SECRET_KEY"
+  edge: true
