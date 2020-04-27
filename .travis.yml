@@ -10,4 +10,15 @@ before_install:
 script:
   - docker run -e CI=true polux0/ci-cd npm run test -- --coverage
 
-#sudo: required
+deploy: 
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "react"
+  env: "React-env"
+  bucket_name: "elasticbeanstalk-us-east-2-883378952005"
+  bucket_path: "react"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secret: "$AWS_SECRET_KEY"
